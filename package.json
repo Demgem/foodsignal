@@ -19,6 +19,7 @@
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.5.0",
     "@testing-library/react": "16.0.1",
+    "@testing-library/user-event": "^14.6.6",
     "@types/jest-axe": "3.5.9",
     "@types/node": "20.16.11",
     "@types/react": "18.3.11",

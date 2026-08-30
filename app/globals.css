@@ -1,3 +1,187 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+ * Design tokens as CSS variables (Requirements 4.1, 4.2).
+ *
+ * These declarations are the runtime-facing half of the token system. Their
+ * values are mirrored in `lib/tokens/values.ts` and mapped into the Tailwind
+ * theme in `tailwind.config.ts`, which references these same variable names so
+ * Tailwind utilities and raw CSS stay in lockstep.
+ *
+ * Keep in sync with `lib/tokens/cssVariables.ts` (cssVariableMap).
+ */
+:root {
+  /* Neutral editorial palette */
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f5f6f7;
+  --color-border: #d8dbe0;
+  --color-text-primary: #16181d;
+  --color-text-secondary: #464b54;
+  --color-text-muted: #5f656f;
+
+  /* Brand / interactive */
+  --color-brand: #0f6f8c;
+  --color-brand-hover: #0b596f;
+  --color-on-brand: #ffffff;
+  --color-focus-ring: #0f6f8c;
+
+  /* Status: Safe (green) — distinct hue from Caution/Avoid (Requirement 4.3) */
+  --color-status-safe: #1f7a44;
+  --color-status-safe-surface: #eef7f1;
+  --color-status-safe-border: #3f9e64;
+  --color-status-safe-foreground: #0f5a30;
+
+  /* Status: Caution (amber) */
+  --color-status-caution: #b06a00;
+  --color-status-caution-surface: #fdf3e3;
+  --color-status-caution-border: #d08a1f;
+  --color-status-caution-foreground: #7a4a00;
+
+  /* Status: Avoid (red) */
+  --color-status-avoid: #c0342b;
+  --color-status-avoid-surface: #fdeeed;
+  --color-status-avoid-border: #d75048;
+  --color-status-avoid-foreground: #8f2019;
+
+  /* Confidence: neutral slate/indigo — distinct from all status families (Requirement 4.4) */
+  --color-confidence-neutral: #4b5563;
+  --color-confidence-neutral-surface: #f1f3f6;
+  --color-confidence-neutral-border: #9aa2af;
+  --color-confidence-neutral-foreground: #333a45;
+
+  /* Typography families */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-display: Georgia, "Times New Roman", ui-serif, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px 0 rgba(16, 24, 40, 0.06),
+    0 1px 3px 0 rgba(16, 24, 40, 0.1);
+  --shadow-md: 0 4px 8px -2px rgba(16, 24, 40, 0.1),
+    0 2px 4px -2px rgba(16, 24, 40, 0.06);
+
+  /* Motion — full-motion defaults (Requirement 4.6 resolves these below) */
+  --motion-duration-fast: 120ms;
+  --motion-duration-base: 220ms;
+  --motion-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-reduced-duration: 0ms;
+
+  /* Effective motion durations. Under prefers-reduced-motion these resolve to
+     no motion (see media query below). Components/utilities should consume the
+     `--duration-*` variables, not the raw `--motion-duration-*` defaults. */
+  --duration-fast: var(--motion-duration-fast);
+  --duration-base: var(--motion-duration-base);
+}
+
+/*
+ * Reduced-motion resolution (Requirements 4.6, 20.7).
+ * When the user agent reports a reduced-motion preference, the effective motion
+ * duration tokens resolve to no motion (0ms), and any token-driven transitions
+ * or animations collapse to no motion.
+ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: var(--motion-reduced-duration);
+    --duration-base: var(--motion-reduced-duration);
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: var(--motion-reduced-duration) !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: var(--motion-reduced-duration) !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  /*
+   * Typographic scale roles (Requirement 5.1): Display, H1, H2, H3, Body,
+   * Label, Caption. Exposed as utility classes so any element can adopt a role
+   * without coupling role to HTML tag (a page still uses exactly one H1 tag,
+   * Requirement 5.2).
+   */
+  .type-display {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .type-h1 {
+    font-family: var(--font-sans);
+    font-size: 2.25rem;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  .type-h2 {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .type-h3 {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+  .type-body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .type-label {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+  .type-caption {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+}
+
+@layer utilities {
+  /*
+   * Tabular numeric style (Requirement 5.3). Scores, nutrition amounts, and
+   * regulatory limits use tabular figures so digits align vertically.
+   */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+}
