@@ -1,0 +1,919 @@
+{
+  "pbtResults": {
+    "5.4 Write property-based test for confidence separation": {
+      "status": "passed",
+      "lastRunTimestamp": 1788128998208
+    },
+    "6.5 Write property-based test for alternative disclosure": {
+      "status": "passed",
+      "lastRunTimestamp": 1788129011781
+    },
+    "10.2 Write property-based test that language change preserves market": {
+      "status": "passed",
+      "lastRunTimestamp": 1788129103433
+    },
+    "11.2 Write property-based test for unknown-slug fallback": {
+      "status": "failed",
+      "failingExample": "Counterexample: [\"__proto__\"]  (fast-check seed: 2024548052, path: \"55\")\n\ngetProductBySlug(\"__proto__\") returned a non-null object (the Object prototype) instead of null. The selectors index fixtures with a plain object literal and look up via `record[key] ?? null`. For the special key \"__proto__\" (and similarly \"constructor\"/\"toString\" etc.), plain-object lookup resolves to inherited prototype members rather than `undefined`, so the null coalescing never triggers. An unknown slug of \"__proto__\" therefore yields partial/incorrect content instead of driving the route to notFound(), violating Property 6 (R23.5).",
+      "lastRunTimestamp": 1788129139151
+    }
+  },
+  "executionHistory": {
+    "1. Scaffold the Next.js App Router project and test tooling": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453499
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125465188
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125679048
+      }
+    ],
+    "2.1 Define the design-token contract and values": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453503
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125682634
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125873316
+      }
+    ],
+    "3.1 Define TypeScript domain types": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453507
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125683420
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125873419
+      }
+    ],
+    "3.2 Author typed fixtures": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453511
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125877044
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126230226
+      }
+    ],
+    "3.3 Implement synchronous selector helpers": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453515
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126232291
+      }
+    ],
+    "4.1 Implement the primitives": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453523
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125877738
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126231631
+      }
+    ],
+    "5.1 Implement `StatusIndicator`": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453529
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126248726
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126526106
+      }
+    ],
+    "5.3 Implement `ConfidenceIndicator`": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453532
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126250121
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126527056
+      }
+    ],
+    "6.1 Implement `ScoreDisplay`": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453537
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126632597
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126871746
+      }
+    ],
+    "6.2 Implement `RecallBanner`": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453540
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126251069
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126528455
+      }
+    ],
+    "6.4 Implement `AlternativeRecommendationCard`": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453545
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126252473
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126529189
+      }
+    ],
+    "7.1 Implement a numeric value + unit rendering helper": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453550
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126253192
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126627096
+      }
+    ],
+    "7.3 Implement `EvidenceCard`, `SourceChip`, and `KnowDontKnowBlock`": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453553
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126633495
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126872653
+      }
+    ],
+    "8.1 Implement `RegulatoryComparisonTable`": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453556
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126634953
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126874618
+      }
+    ],
+    "8.2 Implement `WarningPanel` and `IngredientExplanation`": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453559
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126635849
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126874996
+      }
+    ],
+    "8.3 Implement `AssessmentHeader`": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453562
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126636917
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126876017
+      }
+    ],
+    "9.1 Implement the root layout, primary navigation, and footer": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453564
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126883503
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127127819
+      }
+    ],
+    "10.1 Implement independent interface-language, market, and unit controls": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453567
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127132467
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127267832
+      }
+    ],
+    "11.1 Implement the Not_Found_Layout and account/locked stubs": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453571
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126884562
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127128729
+      }
+    ],
+    "12. Checkpoint — ensure component and property tests pass": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453575
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127281939
+      }
+    ],
+    "13.1 Implement the product page composition": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453578
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127289146
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127990350
+      }
+    ],
+    "14.1 Implement the homepage (`/`)": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453581
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127290545
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127991800
+      }
+    ],
+    "14.2 Implement the scan page (`/scan`)": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453585
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127291499
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127992698
+      }
+    ],
+    "14.3 Implement the search page (`/search`)": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453587
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127292900
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127993651
+      }
+    ],
+    "15.1 Implement ingredient and additive detail pages": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453590
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127293672
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127994694
+      }
+    ],
+    "15.2 Implement the compare page (`/compare`)": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453594
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127999315
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128288544
+      }
+    ],
+    "15.3 Implement the recalls list and recall detail pages": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453598
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128000265
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128289458
+      }
+    ],
+    "15.4 Implement the countries, methodology, and sources pages": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453601
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128001719
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128287099
+      }
+    ],
+    "16.1 Implement editorial and policy layouts": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453604
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128002450
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128290514
+      }
+    ],
+    "17. Apply cross-cutting content and language rules": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453607
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128299168
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128460139
+      }
+    ],
+    "18. Apply the accessibility pass across pages and components": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453610
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128461245
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128647079
+      }
+    ],
+    "19. Add SEO metadata and structured-data placeholders": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453613
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128647724
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128892504
+      }
+    ],
+    "21. Final checkpoint — ensure all tests pass": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125453616
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128893101
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128917448
+      }
+    ],
+    "2. Establish the design-token system and Tailwind theme": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788125873319
+      }
+    ],
+    "4. Build design-system primitives (no domain knowledge)": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126231634
+      }
+    ],
+    "3. Build the typed mock-data layer, fixtures, and selectors": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126232298
+      }
+    ],
+    "5. Build status and confidence domain components with invariants": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126527060
+      }
+    ],
+    "6. Build score, recall, and alternative domain components with invariants": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126871749
+      }
+    ],
+    "7. Build tabular-figure numeric rendering and evidence/source components": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126872657
+      }
+    ],
+    "8. Build regulatory, warning, ingredient, and assessment-header components": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788126876020
+      }
+    ],
+    "9. Build the app shell, primary navigation, and footer": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127127823
+      }
+    ],
+    "11. Implement routing, not-found layout, and route fallbacks": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127128732
+      }
+    ],
+    "10. Implement i18n (design-level) locale controls": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127267839
+      }
+    ],
+    "13. Build the Product page (`/products/[slug]`) with 17 sections in order": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127990354
+      }
+    ],
+    "14. Build the homepage, scan, and search pages": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788127993655
+      }
+    ],
+    "15. Build the browse, transparency, and comparison pages": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128289465
+      }
+    ],
+    "16. Build the editorial and policy pages": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128290523
+      }
+    ],
+    "5.2 Write property-based test for status text + icon invariant": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128931426
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129038885
+      }
+    ],
+    "5.4 Write property-based test for confidence separation": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128932326
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129039833
+      }
+    ],
+    "6.3 Write property-based test for active-recall surfacing": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128933777
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129041232
+      }
+    ],
+    "6.5 Write property-based test for alternative disclosure": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128934729
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129042184
+      }
+    ],
+    "7.2 Write property-based test for tabular figures + units": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788128935606
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129043221
+      }
+    ],
+    "10.2 Write property-based test that language change preserves market": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129047436
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129243109
+      }
+    ],
+    "11.2 Write property-based test for unknown-slug fallback": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129048386
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129320171
+      }
+    ],
+    "13.2 Write property-based test for section order invariance": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129049784
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129243868
+      }
+    ],
+    "2.2 Write tests for token exposure and reduced-motion resolution": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129050735
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129240760
+      }
+    ],
+    "3.4 Write unit tests for selectors and required fixtures": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129051917
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129241709
+      }
+    ],
+    "4.2 Write component tests for primitive accessibility contracts": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129325565
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129492615
+      }
+    ],
+    "9.2 Write component tests for nav order, CTA, and mobile collapse": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129326494
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129494708
+      }
+    ],
+    "13.3 Write component test for the 17-section order and allergen warning": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129327909
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129491668
+      }
+    ],
+    "14.4 Write component tests for homepage copy and search states": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129328845
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129493566
+      }
+    ],
+    "16.2 Write component test for the medical-disclaimer framing and pricing": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129329804
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129490266
+      }
+    ],
+    "7.4 Write component tests for evidence and know/don't-know rendering": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129499118
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129753738
+      }
+    ],
+    "8.4 Write component tests for regulatory table and assessment-header resilience": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129500515
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129752335
+      }
+    ],
+    "20.1 Write navigation smoke tests": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129501465
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129755692
+      }
+    ],
+    "20.2 Write consolidated domain-component invariant tests": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129502864
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129756025
+      }
+    ],
+    "20.3 Write axe accessibility checks on representative pages": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129503696
+      },
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129758724
+      }
+    ],
+    "20. Build the integration and accessibility test suite": [
+      {
+        "executionId": "34be54be-cd64-4f28-8926-796c509ce443",
+        "chatSessionId": "ca8c30ba-28db-4985-a323-52a56ef201e4",
+        "timestamp": 1788129755696
+      }
+    ]
+  }
+}
